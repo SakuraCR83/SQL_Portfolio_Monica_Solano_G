@@ -1,0 +1,42 @@
+/*Create a database for a store that sells at least 15 items, and use select statements to order your items by price and show at least one statistic about the items/*
+
+/*Create the table and name it "inventory", then setup the 5 fields the table will have: item number, item name, quantity, price (used REAL data type to be close to reality) and supplier name/*
+
+CREATE TABLE inventory (item_nbr INTEGER PRIMARY KEY, item_name TEXT, quantity INTEGER, price REAL, supplier_name TEXT);
+
+/*Add the rows containing the items the store will sell/*
+
+INSERT INTO inventory VALUES (1,"A4_notepad", 20, 5.00, "Eason");
+INSERT INTO inventory VALUES (2,"5_Pack_Highlighers", 10, 10.00,"Stabilo");
+INSERT INTO inventory VALUES (3,"HB_Pencil", 50, 2.00, "Faber_Castle");
+INSERT INTO inventory VALUES (4, "Eraser", 20, 3.50, "Faber_Castle");
+INSERT INTO inventory VALUES (5, "Ruler", 15, 1.50, "Eason");
+INSERT INTO inventory VALUES (6, "Blue_Pen", 50, 3.00, "BIC");
+INSERT INTO inventory VALUES (7, "Red_Pen", 50, 3.00, "BIC");
+INSERT INTO inventory VALUES (8, "Black_Pen", 50, 3.00, "BIC");
+INSERT INTO inventory VALUES (9, "Liquid_Paper", 20, 5.00, "Paper_Mate");
+INSERT INTO inventory VALUES (10, "A4_Paper_100",40, 9.50, "Tesco");
+INSERT INTO inventory VALUES (11, "Post_It", 12, 8.50, "Tesco");
+INSERT INTO inventory VALUES (12, "Scissors", 10, 6.00, "Eason");
+INSERT INTO inventory VALUES (13, "Crayons_Box_12", 10, 9.00, "Crayola");
+INSERT INTO inventory VALUES (14, "Color_Pencil_24",15, 25.00, "Faber_Castle");
+INSERT INTO inventory VALUES (15, "To_do_list_notepad", 10, 12.00, "Whitepaper");
+
+/*Sort the inventory by price from most to least expensive/*
+
+SELECT *
+FROM inventory
+ORDER BY price DESC;
+
+/*Find the average price of the inventory and round it to 2 decimals/*
+
+SELECT ROUND(AVG(price),2)
+FROM inventory;
+
+
+/*Show the supplier, item name and quantity where the quantity is 15 or more items and order the data by supplier name and descending quantity/*
+
+SELECT supplier_name, item_name, quantity
+FROM inventory
+WHERE quantity >= 15
+ORDER BY supplier_name, quantity DESC
